@@ -33,7 +33,7 @@ python -m unittest discover -s tests   # sin instalar nada
 | `carga.py` | Lee los correos y el listado de delegaciones (CSV o JSON) y da errores claros si falta algo. |
 | `clasificador.py` | `ClasificadorPorReglas`: puntúa palabras clave, elige categoría y destino y detecta dudosos. |
 | `evaluacion.py` | Resumen para validar: cuántos dudosos y cuántos coinciden con la respuesta correcta. |
-| `interfaz.py` | La ventana: tabla de resultados, detalle del correo y barra de estado. Solo muestra. |
+| `interfaz.py` | La ventana: tarjetas con el resumen, buscador y filtro (todos, dudosos, para repartir, no coinciden), tabla de resultados y panel con el detalle y el porqué de cada propuesta. Solo muestra. |
 | `main.py` | Arranca la ventana o el modo consola. |
 | `datos/` | 15 correos de prueba inventados (con su respuesta correcta) y el listado de delegaciones. |
 | `tests/` | Pruebas de R1, R2a y de la carga de datos. |
