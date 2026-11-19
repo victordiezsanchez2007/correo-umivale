@@ -1,0 +1,16 @@
+id,fecha,remitente,asunto,cuerpo,adjuntos,categoria_esperada,destino_esperado,dudoso_esperado
+1,2026-11-16 08:05,trabajador1@correo-ejemplo.es,Parte de baja,"Buenos días, adjunto el parte de baja de hoy. Un saludo.",parte_baja.pdf,Bajas por enfermedad o accidente,Z08 - Valencia Centro & Sur,no
+2,2026-11-16 08:40,trabajador2@correo-ejemplo.es,Parte de confirmación,Os envío el parte de confirmación de mi baja.,confirmacion.jpg,Bajas por enfermedad o accidente,Z03 - Zona 03 (ejemplo),no
+3,2026-11-16 09:12,trabajador3@correo-ejemplo.es,Cambiar cita de rehabilitación,"No puedo ir el jueves a la sesión de fisioterapia, ¿me podéis dar otra cita?",,Asistencia sanitaria,Z08 - Valencia Centro & Sur,no
+4,2026-11-16 09:30,trabajador4@correo-ejemplo.es,Ingreso hospitalario,Mi marido ha sido ingresado en el hospital tras el accidente de trabajo. Adjunto el informe.,informe_ingreso.pdf,Asistencia sanitaria,Dir. Médica,no
+5,2026-11-16 10:02,rrhh@gran-empresa-ejemplo.es,Solicitud de certificado de estar al corriente,Necesitamos el certificado para presentarlo en una licitación.,,Empresas y autónomos asociados,Z00 - Grandes Empresas,no
+6,2026-11-16 10:15,gestion@asesoria-ejemplo.es,Pago directo de la baja de un trabajador,La empresa ha cerrado y el trabajador solicita el pago directo de la prestación.,solicitud_pago_directo.pdf,Prestaciones económicas,Dir. Prestaciones,no
+7,2026-11-16 10:48,autonoma@correo-ejemplo.es,Cese de actividad,Soy autónoma y quiero solicitar la prestación por cese de actividad.,,Prestaciones económicas,Dir. Prestaciones,no
+8,2026-11-16 11:20,trabajador1@correo-ejemplo.es,Queja por la atención recibida,Es inaceptable: llevo tres semanas esperando y nadie me contesta. Quiero poner una reclamación.,,Reclamaciones y quejas,Dir. Atención al Cliente,no
+9,2026-11-16 11:45,notificaciones@juzgado-ejemplo.es,Requerimiento judicial - Procedimiento 123/2026,Se requiere a la mutua la remisión del expediente en el plazo de diez días.,oficio_juzgado.pdf,Asuntos internos o de terceros,Dir. Jurídica,no
+10,2026-11-16 12:10,desconocido@correo-ejemplo.com,Parte de baja,Adjunto mi parte de baja.,parte_baja.pdf,Bajas por enfermedad o accidente,,si
+11,2026-11-16 12:30,trabajador2@correo-ejemplo.es,Adjunto documentación,,IMG_20261105.jpg,,,si
+12,2026-11-16 13:00,novedades@ofertas-ejemplo.com,¡Últimos días! 30 % de descuento en formación,"Si no quieres recibir más correos, puedes darte de baja aquí.",,No relevante,Archivo (tras revisión),si
+13,2026-11-16 13:25,trabajador4@correo-ejemplo.es,Pago de mi baja,"Todavía no he cobrado este mes, ¿cuándo me pagáis?",parte_alta.pdf,,,si
+14,2026-11-16 15:05,admin@pyme-ejemplo.es,No puedo acceder a la web de empresas,Al entrar con mi usuario me da error de contraseña.,,Asuntos internos o de terceros,Dir. Tecnología,no
+15,2026-11-16 16:40,facturacion@suministros-ejemplo.es,Factura octubre,Adjuntamos la factura del material de oficina.,factura_octubre.pdf,Asuntos internos o de terceros,Dir. Organización y Administración,no
