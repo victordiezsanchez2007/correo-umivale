@@ -35,6 +35,7 @@ python -m unittest discover -s tests   # sin instalar nada
 | `evaluacion.py` | Resumen para validar: cuántos dudosos y cuántos coinciden con la respuesta correcta. |
 | `interfaz.py` | La ventana: tarjetas con el resumen, buscador y filtro (todos, dudosos, para repartir, no coinciden), tabla de resultados y panel con el detalle y el porqué de cada propuesta. Solo muestra. |
 | `main.py` | Arranca la ventana o el modo consola. |
+| `assets/` | Logo de la cabecera e icono de la ventana. Si faltan, la aplicación funciona igual. |
 | `datos/` | 15 correos de prueba inventados (con su respuesta correcta) y el listado de delegaciones. |
 | `tests/` | Pruebas de R1, R2a y de la carga de datos. |
 

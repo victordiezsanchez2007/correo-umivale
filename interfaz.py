@@ -23,15 +23,19 @@ TARJETA = "#FFFFFF"
 TEXTO = "#1F2937"
 SECUNDARIO = "#6B7280"
 BORDE = "#E5E7EB"
-CABECERA = "#1E293B"
-ACENTO = "#E30613"         # rojo UMivale
-ACENTO_OSCURO = "#B8050F"
+CABECERA = "#FFFFFF"
+AZUL = "#0B4A8B"           # azul UMivale
+AZUL_OSCURO = "#083A6E"
+ACENTO = "#E7343F"         # rojo UMivale
+ACENTO_OSCURO = "#C21F2A"
+NARANJA = "#F28C00"
 DUDOSO = "#FFF7E0"
 DUDOSO_TEXTO = "#92400E"
 OK_TEXTO = "#166534"
 ERROR_TEXTO = "#B91C1C"
 SELECCION = "#DBEAFE"
 FUENTE = "Segoe UI"
+CARPETA_ASSETS = Path(__file__).resolve().parent / "assets"
 
 COLUMNAS = [
     ("id", "#", 44, False),
@@ -73,6 +77,10 @@ class VentanaPrincipal(tk.Tk):
         self.geometry("1320x760")
         self.minsize(1000, 600)
         self.configure(background=FONDO)
+        self._imagenes: list[tk.PhotoImage] = []  # Tkinter necesita guardar la referencia
+        icono = self._cargar_imagen("icono.png")
+        if icono:
+            self.iconphoto(True, icono)
 
         self.ruta_correos = ruta_correos
         self.ruta_delegaciones = ruta_delegaciones
@@ -96,8 +104,9 @@ class VentanaPrincipal(tk.Tk):
         estilo.configure(".", font=(FUENTE, 10), background=FONDO, foreground=TEXTO)
         estilo.configure("TFrame", background=FONDO)
         estilo.configure("Cabecera.TFrame", background=CABECERA)
-        estilo.configure("Titulo.TLabel", background=CABECERA, foreground="white", font=(FUENTE, 17, "bold"))
-        estilo.configure("Subtitulo.TLabel", background=CABECERA, foreground="#CBD5E1", font=(FUENTE, 10))
+        estilo.configure("Titulo.TLabel", background=CABECERA, foreground=AZUL, font=(FUENTE, 17, "bold"))
+        estilo.configure("Subtitulo.TLabel", background=CABECERA, foreground=SECUNDARIO, font=(FUENTE, 10))
+        estilo.configure("Logo.TLabel", background=CABECERA)
         estilo.configure("Tarjeta.TFrame", background=TARJETA)
         estilo.configure("TarjetaTitulo.TLabel", background=TARJETA, foreground=SECUNDARIO, font=(FUENTE, 9))
         estilo.configure("TarjetaNumero.TLabel", background=TARJETA, foreground=TEXTO, font=(FUENTE, 22, "bold"))
@@ -107,9 +116,9 @@ class VentanaPrincipal(tk.Tk):
         estilo.configure("Acento.TButton", background=ACENTO, foreground="white", borderwidth=0,
                          focusthickness=0, padding=(14, 7), font=(FUENTE, 10, "bold"))
         estilo.map("Acento.TButton", background=[("active", ACENTO_OSCURO), ("pressed", ACENTO_OSCURO)])
-        estilo.configure("Claro.TButton", background="#334155", foreground="white", borderwidth=0,
+        estilo.configure("Claro.TButton", background=AZUL, foreground="white", borderwidth=0,
                          focusthickness=0, padding=(12, 7))
-        estilo.map("Claro.TButton", background=[("active", "#475569"), ("pressed", "#475569")])
+        estilo.map("Claro.TButton", background=[("active", AZUL_OSCURO), ("pressed", AZUL_OSCURO)])
 
         estilo.configure("TEntry", fieldbackground=TARJETA, bordercolor=BORDE, lightcolor=BORDE,
                          darkcolor=BORDE, padding=6)
@@ -124,11 +133,24 @@ class VentanaPrincipal(tk.Tk):
         estilo.map("Treeview.Heading", background=[("active", "#E2E8F0")])
         estilo.map("Treeview", background=[("selected", SELECCION)], foreground=[("selected", TEXTO)])
 
+    def _cargar_imagen(self, nombre: str) -> tk.PhotoImage | None:
+        """Carga una imagen de la carpeta assets; si falta, la ventana funciona igual."""
+        try:
+            imagen = tk.PhotoImage(file=str(CARPETA_ASSETS / nombre))
+        except tk.TclError:
+            return None
+        self._imagenes.append(imagen)
+        return imagen
+
     # ---------- construcción de la ventana ----------
 
     def _crear_cabecera(self) -> None:
-        cabecera = ttk.Frame(self, style="Cabecera.TFrame", padding=(24, 16))
+        cabecera = ttk.Frame(self, style="Cabecera.TFrame", padding=(24, 12))
         cabecera.pack(fill="x")
+        logo = self._cargar_imagen("logo.png")
+        if logo:
+            ttk.Label(cabecera, image=logo, style="Logo.TLabel").pack(side="left")
+            tk.Frame(cabecera, width=1, height=44, background=BORDE).pack(side="left", padx=18)
         textos = ttk.Frame(cabecera, style="Cabecera.TFrame")
         textos.pack(side="left")
         ttk.Label(textos, text="Clasificación de correos", style="Titulo.TLabel").pack(anchor="w")
@@ -142,6 +164,12 @@ class VentanaPrincipal(tk.Tk):
                    command=self._elegir_delegaciones).pack(side="left", padx=4)
         ttk.Button(botones, text="Clasificar", style="Acento.TButton",
                    command=self.clasificar).pack(side="left", padx=(4, 0))
+        # Franja con los colores de la marca bajo la cabecera
+        franja = tk.Frame(self, height=4, background=FONDO)
+        franja.pack(fill="x")
+        for columna, (color, peso) in enumerate(((ACENTO, 2), (AZUL, 5), (NARANJA, 1))):
+            franja.columnconfigure(columna, weight=peso)
+            tk.Frame(franja, height=4, background=color).grid(row=0, column=columna, sticky="ew")
 
     def _crear_tarjetas(self) -> None:
         fila = ttk.Frame(self, padding=(24, 18, 24, 6))
